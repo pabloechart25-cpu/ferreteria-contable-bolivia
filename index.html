@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Ferretería</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <header>
+      <h1>🛠️ Sistema de Control - Ferretería</h1>
+      <p>Inventario, ventas y reportes profesionales.</p>
+    </header>
+
+    <!-- Registro de inventario -->
+    <section class="form-section">
+      <h2>📦 Agregar al Inventario</h2>
+      <form id="inventarioForm">
+        <input type="text" id="nombreProducto" placeholder="Nombre del producto" required>
+        <input type="number" id="precioProducto" placeholder="Precio (Bs)" required>
+        <input type="number" id="stockProducto" placeholder="Stock inicial" required>
+        <button type="submit">➕ Agregar al Inventario</button>
+      </form>
+    </section>
+
+    <!-- Inventario actual -->
+    <section class="ventas-section">
+      <h2>📋 Inventario Actual</h2>
+      <table id="tablaInventario">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio (Bs)</th>
+            <th>Stock</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Ventas -->
+    <section class="form-section">
+      <h2>💰 Registrar Venta</h2>
+      <form id="ventaForm">
+        <select id="productoVenta" required></select>
+        <input type="number" id="cantidadVenta" placeholder="Cantidad" required>
+        <select id="metodoPago" required>
+          <option value="efectivo">Efectivo</option>
+          <option value="qr">QR</option>
+        </select>
+        <button type="submit">✅ Registrar Venta</button>
+      </form>
+    </section>
+
+    <section class="ventas-section">
+      <h2>🧾 Registro de Ventas</h2>
+      <table id="tablaVentas">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total (Bs)</th>
+            <th>Método de Pago</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="totales">
+        <h3>💵 Total Diario: <span id="totalDiario">0</span> Bs</h3>
+      </div>
+      <div class="exportar">
+        <button onclick="exportarPDF('diario')">📄 PDF Diario</button>
+        <button onclick="exportarPDF('mensual')">📄 PDF Mensual</button>
+        <button onclick="exportarPDF('trimestral')">📄 PDF Trimestral</button>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
